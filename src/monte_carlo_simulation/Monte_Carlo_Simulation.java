@@ -19,7 +19,7 @@ public class Monte_Carlo_Simulation {
        
        face.setDefaultCloseOperation(EXIT_ON_CLOSE); 
        face.setLocationRelativeTo(null);
-       
+       /*
        int Frequency[]={10,20,40,60,40,30};
        int dailyD[]={0,1,2,3,4,5};
        int numberofdayes=10;
@@ -27,7 +27,7 @@ public class Monte_Carlo_Simulation {
         System.out.println("Interval"+inv);
         System.out.println("avg:"+avrge(inv));
         System.out.println("expected:"+EXpected(dailyD,Frequency));
-        
+        */
     }
     static double[] getProbability(int Frequency[]){
         double sum=0.0 ;
@@ -62,7 +62,7 @@ public class Monte_Carlo_Simulation {
         ArrayList<Integer> Interval = new ArrayList<Integer>();
         double Freq[]=getCumulative(Frequency);
         //int[]RN=getRandomNumbers(numberOfDaysYouWantToSimulate);
-        int []RN={52,37,82,69,98,96,33,50,88,90};
+        int []RN=getRandomNumbers(numberOfDaysYouWantToSimulate);
        
          for (int i = 0; i < RN.length; i++) {
              int number1=RN[i];
@@ -104,5 +104,14 @@ public class Monte_Carlo_Simulation {
     
     return sum;
     }
+    public static int[] convertIntegers(ArrayList<Integer> integers)
+{
+    int[] ret = new int[integers.size()];
+    for (int i=0; i < ret.length; i++)
+    {
+        ret[i] = integers.get(i).intValue();
+    }
+    return ret;
+}
 }
 
