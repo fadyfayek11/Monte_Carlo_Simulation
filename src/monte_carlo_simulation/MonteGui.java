@@ -1,7 +1,12 @@
 package monte_carlo_simulation;
 
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class MonteGui extends javax.swing.JFrame {
@@ -9,6 +14,7 @@ public class MonteGui extends javax.swing.JFrame {
     static ArrayList<Integer> dailydemand;
     static ArrayList<Integer> res;
     static int numberofdays ;
+    
     public MonteGui() {
         initComponents();
         frequency=new ArrayList<Integer>() ;
@@ -21,8 +27,6 @@ public class MonteGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mytable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -37,19 +41,17 @@ public class MonteGui extends javax.swing.JFrame {
         averagedaily = new javax.swing.JLabel();
         expecteddaily = new javax.swing.JLabel();
         Result = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        cumulative = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        prob = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        sdd = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        rn = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(29, 28, 28));
-
-        mytable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Day", "Probability", "Cumulative", "Random Numbers", "Simulated Daily demand"
-            }
-        ));
-        jScrollPane1.setViewportView(mytable);
 
         jLabel1.setText("Frequency");
 
@@ -93,20 +95,60 @@ public class MonteGui extends javax.swing.JFrame {
             }
         });
 
+        cumulative.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cumulative"
+            }
+        ));
+        jScrollPane2.setViewportView(cumulative);
+
+        prob.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Probability"
+            }
+        ));
+        jScrollPane3.setViewportView(prob);
+
+        sdd.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Simulated Daily Demand"
+            }
+        ));
+        jScrollPane4.setViewportView(sdd);
+
+        rn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Random Numbers"
+            }
+        ));
+        jScrollPane5.setViewportView(rn);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 173, Short.MAX_VALUE)
-                        .addComponent(insertforfrequency, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,30 +161,39 @@ public class MonteGui extends javax.swing.JFrame {
                                         .addGap(30, 30, 30)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(inputfrequecy, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(inputdaily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(inputdaily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(Insertfordemand, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96))
+                                .addGap(106, 106, 106))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Resultbtn)
-                                .addGap(75, 75, 75)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(insertforfrequency, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Resultbtn)
+                        .addGap(58, 58, 58)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(25, 25, 25)
                         .addComponent(averagedaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(128, 128, 128)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(expecteddaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48)
+                        .addComponent(expecteddaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -150,10 +201,7 @@ public class MonteGui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputfrequecy, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,14 +218,22 @@ public class MonteGui extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputdaysnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(Resultbtn)))
-                .addGap(18, 18, 18)
+                        .addComponent(Resultbtn)
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(averagedaily)
                     .addComponent(jLabel5)
-                    .addComponent(expecteddaily))
+                    .addComponent(expecteddaily)
+                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -233,6 +289,66 @@ public class MonteGui extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,"Added Succesfully \nYour Current DailyDemand is \n"+dailydemand,"Information",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_InsertfordemandActionPerformed
 
+    
+    
+    
+     private void sim(String tablename,ArrayList<Integer> list)
+    {
+        
+        DefaultTableModel model = (DefaultTableModel) sdd.getModel();
+       Object[] objArray = list.toArray();
+        for (int i = 0; i <list.size(); i++) {
+            String lines=objArray[i].toString();
+            String[] datarow=lines.split("@");
+            model.addRow(datarow);
+        }
+       
+        sdd.setModel(model);
+                
+    }
+     private void Cum(String tablename,ArrayList<Double> list)
+    {
+        
+        DefaultTableModel model = (DefaultTableModel) cumulative.getModel();
+       Object[] objArray = list.toArray();
+        for (int i = 0; i <list.size(); i++) {
+            String lines=objArray[i].toString();
+            String[] datarow=lines.split("@");
+            model.addRow(datarow);
+        }
+       
+        cumulative.setModel(model);
+                
+    } 
+     private void rand(String tablename,ArrayList<Integer> list)
+    {
+        
+        DefaultTableModel model = (DefaultTableModel) rn.getModel();
+       Object[] objArray = list.toArray();
+        for (int i = 0; i <list.size(); i++) {
+            String lines=objArray[i].toString();
+            String[] datarow=lines.split("@");
+            model.addRow(datarow);
+        }
+       
+        rn.setModel(model);
+                
+    } 
+      private void Prob(String tablename,ArrayList<Double> list)
+    {
+        
+        DefaultTableModel model = (DefaultTableModel) prob.getModel();
+       Object[] objArray = list.toArray();
+        for (int i = 0; i <list.size(); i++) {
+            String lines=objArray[i].toString();
+            String[] datarow=lines.split("@");
+            model.addRow(datarow);
+        }
+       
+        prob.setModel(model);
+                
+    } 
+    
     private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
         if(frequency.size()==0||dailydemand.size()==0||numberofdays==0){
             JOptionPane.showMessageDialog(this,"Days,Frequences and demands must not be empty","Error",JOptionPane.ERROR_MESSAGE);
@@ -244,6 +360,18 @@ public class MonteGui extends javax.swing.JFrame {
             res=Monte_Carlo_Simulation.getSimulatedDailyDemand(da,fre,numberofdays);
             averagedaily.setText(String.valueOf(Monte_Carlo_Simulation.avrge(res)));
             expecteddaily.setText(String.valueOf(Monte_Carlo_Simulation.EXpected(da, fre)));
+            int[] random=Monte_Carlo_Simulation.getRandomNumbers(numberofdays);
+            double[] cum=Monte_Carlo_Simulation.getCumulative(fre);
+            double[] prob=Monte_Carlo_Simulation.getProbability(fre);
+            /**/
+            sim("Dailysim",res);
+            /**/
+            Cum("demand", Monte_Carlo_Simulation.convertArrayD(cum));
+            /**/
+            rand("rn", Monte_Carlo_Simulation.convertArray(random));
+            /**/
+            Prob("demand",Monte_Carlo_Simulation.convertArrayD(prob));
+             
         }
     }//GEN-LAST:event_ResultActionPerformed
 
@@ -260,6 +388,7 @@ public class MonteGui extends javax.swing.JFrame {
     private javax.swing.JButton Result;
     private javax.swing.JButton Resultbtn;
     private javax.swing.JLabel averagedaily;
+    private javax.swing.JTable cumulative;
     private javax.swing.JLabel expecteddaily;
     private javax.swing.JTextField inputdaily;
     private javax.swing.JTextField inputdaysnumber;
@@ -270,7 +399,12 @@ public class MonteGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable mytable;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable prob;
+    private javax.swing.JTable rn;
+    private javax.swing.JTable sdd;
     // End of variables declaration//GEN-END:variables
 }

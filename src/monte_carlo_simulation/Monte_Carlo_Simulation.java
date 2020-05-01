@@ -8,26 +8,13 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Monte_Carlo_Simulation {
 
     public static void main(String[] args) {
-       /* int [] rand;
-        rand=getRandomNumbers(10);
-        for(int i=0;i<rand.length;i++){
-            System.out.println(rand[i]);
-        }*/
+     
        MonteGui face=new MonteGui();
        face.setVisible(true);
        face.setResizable(false);
-       
        face.setDefaultCloseOperation(EXIT_ON_CLOSE); 
        face.setLocationRelativeTo(null);
-       /*
-       int Frequency[]={10,20,40,60,40,30};
-       int dailyD[]={0,1,2,3,4,5};
-       int numberofdayes=10;
-        ArrayList<Integer>inv=getSimulatedDailyDemand(dailyD,Frequency,numberofdayes);
-        System.out.println("Interval"+inv);
-        System.out.println("avg:"+avrge(inv));
-        System.out.println("expected:"+EXpected(dailyD,Frequency));
-        */
+       face.setTitle("Monte Carlo");
     }
     static double[] getProbability(int Frequency[]){
         double sum=0.0 ;
@@ -61,7 +48,6 @@ public class Monte_Carlo_Simulation {
     static ArrayList<Integer> getSimulatedDailyDemand(int [] dailyDemand,int[]Frequency,int numberOfDaysYouWantToSimulate){
         ArrayList<Integer> Interval = new ArrayList<Integer>();
         double Freq[]=getCumulative(Frequency);
-        //int[]RN=getRandomNumbers(numberOfDaysYouWantToSimulate);
         int []RN=getRandomNumbers(numberOfDaysYouWantToSimulate);
        
          for (int i = 0; i < RN.length; i++) {
@@ -113,5 +99,23 @@ public class Monte_Carlo_Simulation {
     }
     return ret;
 }
+    public static ArrayList<Integer> convertArray(int []number)
+    {
+        ArrayList<Integer>intnum=new ArrayList<>();
+        for (int i = 0; i < number.length; i++) {
+            intnum.add(number[i]);
+        }
+        return intnum;
+    
+    }
+    public static ArrayList<Double> convertArrayD(double []number)
+    {
+        ArrayList<Double>intnum=new ArrayList<>();
+        for (int i = 0; i < number.length; i++) {
+            intnum.add(number[i]);
+        }
+        return intnum;
+    
+    }
 }
 
