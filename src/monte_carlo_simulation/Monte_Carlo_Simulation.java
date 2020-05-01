@@ -63,7 +63,6 @@ public class Monte_Carlo_Simulation {
                  {
                      int interval=dailyDemand[j+1];
                      Interval.add(interval);
-
                  }
              }
          }

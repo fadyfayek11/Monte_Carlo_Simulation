@@ -298,9 +298,10 @@ public class MonteGui extends javax.swing.JFrame {
                 model.addRow(datarow);
             }
 
-            sdd.setModel(model);
+           // sdd.setModel(model);
             y++ ;
         }else{
+            
             model.setRowCount(0);
             Object[] objArray = list.toArray();
             for (int i = 0; i <list.size(); i++) {
@@ -308,7 +309,7 @@ public class MonteGui extends javax.swing.JFrame {
                 String[] datarow=lines.split("@");
                 model.addRow(datarow);
             }
-
+            
             sdd.setModel(model);
         }
                 
@@ -324,7 +325,7 @@ public class MonteGui extends javax.swing.JFrame {
                 model.addRow(datarow);
             }
 
-            cumulative.setModel(model);
+            //cumulative.setModel(model);
             z++ ;
         }else{
             model.setRowCount(0);
@@ -349,7 +350,7 @@ public class MonteGui extends javax.swing.JFrame {
                 model.addRow(datarow);
             }
 
-            rn.setModel(model);
+           // rn.setModel(model);
             w++ ;
         }else{
            model.setRowCount(0);
@@ -375,7 +376,7 @@ public class MonteGui extends javax.swing.JFrame {
                 model.addRow(datarow);
             }
        
-            prob.setModel(model);
+            //prob.setModel(model);
             x++;
         }else{
             model.setRowCount(0);
