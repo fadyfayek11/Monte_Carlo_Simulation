@@ -1,10 +1,6 @@
 package monte_carlo_simulation;
 
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +10,7 @@ public class MonteGui extends javax.swing.JFrame {
     static ArrayList<Integer> dailydemand;
     static ArrayList<Integer> res;
     static int numberofdays ;
-    
+    static int x=0,y=0,z=0,w=0 ;
     public MonteGui() {
         initComponents();
         frequency=new ArrayList<Integer>() ;
@@ -147,7 +143,7 @@ public class MonteGui extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(75, 75, 75))
+                                .addGap(56, 56, 56))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -162,38 +158,37 @@ public class MonteGui extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(inputfrequecy, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(inputdaily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(Insertfordemand, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(106, 106, 106))
+                                .addGap(87, 87, 87))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(insertforfrequency, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(104, 104, 104))))
+                                .addGap(85, 85, 85))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Resultbtn)
-                        .addGap(58, 58, 58)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(39, 39, 39)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(averagedaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(expecteddaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(averagedaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(expecteddaily, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -294,59 +289,105 @@ public class MonteGui extends javax.swing.JFrame {
     
      private void sim(String tablename,ArrayList<Integer> list)
     {
-        
         DefaultTableModel model = (DefaultTableModel) sdd.getModel();
-       Object[] objArray = list.toArray();
-        for (int i = 0; i <list.size(); i++) {
-            String lines=objArray[i].toString();
-            String[] datarow=lines.split("@");
-            model.addRow(datarow);
+        if(y==0){
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+
+            sdd.setModel(model);
+            y++ ;
+        }else{
+            model.setRowCount(0);
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+
+            sdd.setModel(model);
         }
-       
-        sdd.setModel(model);
                 
     }
      private void Cum(String tablename,ArrayList<Double> list)
     {
-        
         DefaultTableModel model = (DefaultTableModel) cumulative.getModel();
-       Object[] objArray = list.toArray();
-        for (int i = 0; i <list.size(); i++) {
-            String lines=objArray[i].toString();
-            String[] datarow=lines.split("@");
-            model.addRow(datarow);
-        }
-       
-        cumulative.setModel(model);
-                
+        if(z==0){
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+
+            cumulative.setModel(model);
+            z++ ;
+        }else{
+            model.setRowCount(0);
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+
+            cumulative.setModel(model);
+        }        
     } 
      private void rand(String tablename,ArrayList<Integer> list)
     {
-        
-        DefaultTableModel model = (DefaultTableModel) rn.getModel();
-       Object[] objArray = list.toArray();
-        for (int i = 0; i <list.size(); i++) {
-            String lines=objArray[i].toString();
-            String[] datarow=lines.split("@");
-            model.addRow(datarow);
+         DefaultTableModel model = (DefaultTableModel) rn.getModel();
+        if(w==0){
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+
+            rn.setModel(model);
+            w++ ;
+        }else{
+           model.setRowCount(0);
+           Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+
+            rn.setModel(model);
         }
-       
-        rn.setModel(model);
                 
     } 
       private void Prob(String tablename,ArrayList<Double> list)
     {
-        
-        DefaultTableModel model = (DefaultTableModel) prob.getModel();
-       Object[] objArray = list.toArray();
-        for (int i = 0; i <list.size(); i++) {
-            String lines=objArray[i].toString();
-            String[] datarow=lines.split("@");
-            model.addRow(datarow);
-        }
+        DefaultTableModel model= (DefaultTableModel) prob.getModel() ;
+        if(x==0){
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
        
-        prob.setModel(model);
-                
+            prob.setModel(model);
+            x++;
+        }else{
+            model.setRowCount(0);
+            Object[] objArray = list.toArray();
+            for (int i = 0; i <list.size(); i++) {
+                String lines=objArray[i].toString();
+                String[] datarow=lines.split("@");
+                model.addRow(datarow);
+            }
+       
+            prob.setModel(model);
+        }
     } 
     
     private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
