@@ -2,7 +2,6 @@ package monte_carlo_simulation;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Monte_Carlo_Simulation {
@@ -27,7 +26,7 @@ public class Monte_Carlo_Simulation {
         }
         return probability;
     }
-    static double[] getCumulative(int Frequency[]){
+    static double[] getCumulativeProbability(int Frequency[]){
         double sum=0.0 ;
         double [] prob=getProbability(Frequency) ;
         double [] cum=new double[prob.length];
@@ -45,9 +44,9 @@ public class Monte_Carlo_Simulation {
         }
         return rand ;
     }
-    static ArrayList<Integer> getSimulatedDailyDemand(int [] dailyDemand,int[]Frequency,int numberOfDaysYouWantToSimulate){
+    static ArrayList<Integer> getSimulatedValuesOfTheVariable(int [] dailyDemand,int[]Frequency,int numberOfDaysYouWantToSimulate){
         ArrayList<Integer> Interval = new ArrayList<Integer>();
-        double Freq[]=getCumulative(Frequency);
+        double Freq[]=getCumulativeProbability(Frequency);
         int []RN=getRandomNumbers(numberOfDaysYouWantToSimulate);
        
          for (int i = 0; i < RN.length; i++) {
@@ -69,7 +68,7 @@ public class Monte_Carlo_Simulation {
          }
          return Interval;
     }
-    static double avrge(ArrayList<Integer> interval)
+    static double avrgeSimulatedValues(ArrayList<Integer> interval)
     {
         double avg=0.0;
         double sum=0.0;
